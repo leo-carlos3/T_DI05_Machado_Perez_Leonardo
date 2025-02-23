@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class HelloApplication extends Application {
     @Override
@@ -18,6 +20,19 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+        connect();
         launch();
     }
+
+    public static void connect() {
+        // connection string
+        var url = "jdbc:sqlite:chinook.db";
+
+        try (var conn = DriverManager.getConnection(url)) {
+            System.out.println("Connection to SQLite has been established.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }
