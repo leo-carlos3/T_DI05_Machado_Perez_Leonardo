@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class HelloApplication extends Application {
+public class ReportApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ReportApplication.class.getResource("report-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
