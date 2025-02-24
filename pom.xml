@@ -64,13 +64,28 @@
             <artifactId>jasperreports-jdt</artifactId>
             <version>7.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-fonts</artifactId>
+            <version>7.0.1</version> <!-- Use the version that matches your JasperReports version -->
+        </dependency>
 
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-pdf</artifactId>
+            <version>7.0.1</version> <!-- Use the same version -->
+        </dependency>
 
         <!-- JasperReports Core -->
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
             <version>7.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.4.0</version>
         </dependency>
 
         <!-- JasperReports Functions (used in report calculations) -->

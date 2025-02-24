@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JasperReport;
 
 import java.io.IOException;
 import java.sql.DriverManager;
@@ -17,10 +18,10 @@ public class ReportApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+
     }
 
     public static void main(String[] args) {
-        connect();
         launch();
     }
 
