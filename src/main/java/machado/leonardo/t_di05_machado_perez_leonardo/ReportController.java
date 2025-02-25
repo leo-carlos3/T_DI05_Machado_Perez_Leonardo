@@ -1,14 +1,20 @@
 package machado.leonardo.t_di05_machado_perez_leonardo;
 
 
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -31,6 +37,8 @@ No se pueden incrustar estilos a los componentes directamente si no es a través
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
+
+
     @FXML
     protected void informeClientes()
     {
@@ -53,7 +61,6 @@ No se pueden incrustar estilos a los componentes directamente si no es a través
             try (var conn = DriverManager.getConnection(url)) {
                 System.out.println("Connection to SQLite has been established.");
                 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, conn);
-                // Mostramos el informe (el valor true al cerrar el informe se cierra la aplicación.
                 JasperViewer.viewReport(jasperPrint, false);
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -65,13 +72,18 @@ No se pueden incrustar estilos a los componentes directamente si no es a través
     }
     @FXML
     protected void informeArtistas() {
-        //El informe de artistas mostrará una ventana un listview con todos los artistas.
-        // Al seleccionar uno de ellos se generará el informe de artista.
-        //El informe de artistas contendrá un encabezado con el nombre de la empresa y su logo.
-        // Después  Aparecerá el nombre del artista seguido con un listado de los albums de dicho artista.
-        // Para cada albúm también aparecerán las pistas (tracks) que tiene cada uno de los álbunes.
-        welcomeText.setText("Welcome to JavaFX Application!");
-
+        FXMLLoader fxmlLoader = new FXMLLoader(ReportController.class.getResource("artista-view.fxml"));
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load(), 500, 500);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Stage stage = new Stage();
+        stage.setTitle("Informe de artistas");
+        stage.setScene(scene);
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.show();
     }
     @FXML
     protected void exit() {

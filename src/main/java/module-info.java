@@ -8,6 +8,7 @@ module machado.leonardo.t_di05_machado_perez_leonardo {
     requires java.sql;
     requires net.sf.jasperreports.core;
     requires com.fasterxml.jackson.dataformat.xml;
+    requires java.management;
 
     opens machado.leonardo.t_di05_machado_perez_leonardo to javafx.fxml;
     exports machado.leonardo.t_di05_machado_perez_leonardo;

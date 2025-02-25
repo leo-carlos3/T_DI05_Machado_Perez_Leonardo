@@ -15,7 +15,7 @@ public class ReportApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ReportApplication.class.getResource("report-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        stage.setTitle("Aplicación de informes");
         stage.setScene(scene);
         stage.show();
 

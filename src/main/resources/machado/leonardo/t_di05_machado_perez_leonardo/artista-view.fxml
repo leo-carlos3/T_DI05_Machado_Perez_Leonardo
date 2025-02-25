@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10" stylesheets="@reports.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="machado.leonardo.t_di05_machado_perez_leonardo.ArtistaController">
+<Text text="Seleccione un artista" fx:id="texto"/>
+        <ListView prefHeight="300.0" prefWidth="100.0" fx:id="artistas" />
+    <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="87.0" text="Button" onAction="#botonGenerar"
+    fx:id="botonArtistas"/>
+
+</VBox>
