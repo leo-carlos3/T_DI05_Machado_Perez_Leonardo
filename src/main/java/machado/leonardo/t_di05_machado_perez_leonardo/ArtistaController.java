@@ -56,8 +56,8 @@ public class ArtistaController {
         try (var conn = DriverManager.getConnection(url)) {
             jasperReport = JasperCompileManager.compileReport(inputStream);
             HashMap<String, Object> params = new HashMap<String, Object>();
-            params.put("ID", artista.getId()+"");
-            System.out.println(params);
+            params.put("id", artista.getId()+"");
+            System.out.println(params.values());
             // Al informe compilado le cargamos los parametros y la conexión a la base de datos
             System.out.println("Connection to SQLite has been established.");
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, conn);

@@ -1,34 +1,30 @@
 <!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
-<jasperReport name="informeArtista" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
-	<property name="com.jaspersoft.studio.data.sql.tables" value="dHJhY2tzIEFTICw4MiwxNjgsMzZjZmZmMzUtNzYwMS00N2Q5LTlkMWMtYWZiYTBkOTgzZTliO2Fs&#xa;YnVtcyBBUyAsMjgxLDE3LDcwNmZmMjk0LWM5NWMtNDMzOS05NDkxLTI5ZjQ2N2ViZmYxNTthcnRp&#xa;c3RzIEFTICw3OSwzMixmZTM3OWQ3Zi1iZTM5LTQ3OWEtYmJhYy00MTRjYjQ1YmY4YmU7"/>
+<jasperReport name="artista" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7eebaa4-068b-407f-bf7a-d4c2e72a1292">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="YWxidW1zIEFTICwxOTgsMTQsMDIwYWE1YjgtYzM1Ny00ZmQzLThhOTktOGQ0ODM4NTc1Zjc3O3Ry&#xa;YWNrcyBBUyAsMTM5LDIyMCwyZTYyMDE4Zi02MzNhLTQ5ODMtOTkxYS04NWNmZjA1MTJjNjM7YXJ0&#xa;aXN0cyBBUyAsMzgsMjksODAxOWViMmQtNmExOS00ZTY1LWJkMDctMTBkNTdhZWRmNzA0Ow=="/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="di05"/>
-	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50.0" bold="false"/>
-	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18.0" bold="false"/>
-	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14.0" bold="true"/>
-	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
-	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
-		<conditionalStyle mode="Opaque" backcolor="#F0EFEF">
-			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
-		</conditionalStyle>
-	</style>
-	<parameter name="ID" class="java.lang.String">
+	<style name="Title" fontName="Arial" fontSize="26.0" bold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18.0"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12.0" bold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12.0"/>
+	<parameter name="id" class="java.lang.String">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
-	<query language="SQL"><![CDATA[SELECT artists. Name ,
-	artists. ArtistId ,
+	<query language="SQL"><![CDATA[SELECT artists. ArtistId ,
+	artists. Name ,
 	albums. Title ,
+	albums. AlbumId ,
+	albums. ArtistId ,
 	tracks. Name ,
-	tracks. GenreId ,
+	tracks. AlbumId ,
 	tracks. Composer ,
-	tracks. Milliseconds ,
-	tracks. UnitPrice 
+	tracks. UnitPrice ,
+	tracks. Bytes 
 FROM tracks
 	INNER JOIN albums ON 
 	 tracks. AlbumId  = albums. AlbumId  
 	INNER JOIN artists ON 
 	 albums. ArtistId  = artists. ArtistId
-WHERE artists. ArtistId=$P{ID}
-]]></query>
+	 WHERE artists. ArtistId=$P{id}]]></query>
 	<field name="ArtistId" class="java.lang.Object">
 		<property name="com.jaspersoft.studio.field.name" value="ArtistId"/>
 		<property name="com.jaspersoft.studio.field.label" value="ArtistId"/>
@@ -44,9 +40,24 @@ WHERE artists. ArtistId=$P{ID}
 		<property name="com.jaspersoft.studio.field.label" value="Title"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="albums"/>
 	</field>
-	<field name="COLUMN_3" class="java.lang.Object">
+	<field name="AlbumId" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.name" value="AlbumId"/>
+		<property name="com.jaspersoft.studio.field.label" value="AlbumId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="albums"/>
+	</field>
+	<field name="COLUMN_5" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.name" value="ArtistId"/>
+		<property name="com.jaspersoft.studio.field.label" value="ArtistId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="albums"/>
+	</field>
+	<field name="COLUMN_6" class="java.lang.Object">
 		<property name="com.jaspersoft.studio.field.name" value="Name"/>
 		<property name="com.jaspersoft.studio.field.label" value="Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tracks"/>
+	</field>
+	<field name="COLUMN_7" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.name" value="AlbumId"/>
+		<property name="com.jaspersoft.studio.field.label" value="AlbumId"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tracks"/>
 	</field>
 	<field name="Composer" class="java.lang.Object">
@@ -54,108 +65,109 @@ WHERE artists. ArtistId=$P{ID}
 		<property name="com.jaspersoft.studio.field.label" value="Composer"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tracks"/>
 	</field>
-	<field name="Milliseconds" class="java.lang.Object">
-		<property name="com.jaspersoft.studio.field.name" value="Milliseconds"/>
-		<property name="com.jaspersoft.studio.field.label" value="Milliseconds"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tracks"/>
-	</field>
 	<field name="UnitPrice" class="java.lang.Object">
 		<property name="com.jaspersoft.studio.field.name" value="UnitPrice"/>
 		<property name="com.jaspersoft.studio.field.label" value="UnitPrice"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tracks"/>
 	</field>
+	<field name="Bytes" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.name" value="Bytes"/>
+		<property name="com.jaspersoft.studio.field.label" value="Bytes"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tracks"/>
+	</field>
+	<group name="Group1">
+		<expression><![CDATA[$F{AlbumId}]]></expression>
+		<groupHeader>
+			<band height="51">
+				<element kind="textField" uuid="53b06611-b6d2-4c3c-a10e-2b349a2d73d3" x="130" y="13" width="423" height="24" forecolor="#006600" bold="true" style="SubTitle">
+					<expression><![CDATA[$F{Title}]]></expression>
+				</element>
+				<element kind="rectangle" uuid="6e6a2f69-aed6-45fd-bd5d-08c1142e76c2" mode="Opaque" x="-20" y="16" width="20" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
+				<element kind="staticText" uuid="e3b4153e-421c-486c-b3ee-931b89a7bbf4" x="10" y="17" width="120" height="16" bold="true" hTextAlign="Center">
+					<text><![CDATA[Canciones del álbum ->]]></text>
+				</element>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
 	<background splitType="Stretch"/>
-	<title height="132" splitType="Stretch">
-		<element kind="image" uuid="97705585-a0b5-4ec7-86f3-ae10c220e6af" x="456" y="0" width="99" height="132">
+	<title height="80" splitType="Stretch">
+		<element kind="image" uuid="d7cb9de5-f1d6-4e9a-8441-72f5e2127742" x="470" y="0" width="105" height="64">
 			<expression><![CDATA["logo.jpg"]]></expression>
 		</element>
-		<element kind="frame" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a" mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000">
-			<element kind="staticText" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21" x="0" y="0" width="370" height="66" bold="false" style="Title">
-				<text><![CDATA[$Name]]></text>
-			</element>
-			<element kind="staticText" uuid="8978eac3-c578-41c9-837e-48d2b0184642" x="157" y="66" width="249" height="29" fontSize="22.0" bold="false" style="SubTitle">
-				<text><![CDATA[Informe sobre artista]]></text>
-			</element>
-		</element>
-		<element kind="frame" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4" mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000">
-			<element kind="textField" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8" x="307" y="12" width="144" height="20" forecolor="#FFFFFF" fontSize="12.0" pattern="EEEEE dd MMMMM yyyy" hTextAlign="Right">
-				<expression><![CDATA[new java.util.Date()]]></expression>
-			</element>
+		<element kind="textField" uuid="b1ebb1f3-8133-4f1a-8435-779481736c28" x="0" y="0" width="470" height="80" fontSize="40.0" hTextAlign="Center" vTextAlign="Middle">
+			<expression><![CDATA[$F{Name}]]></expression>
 		</element>
 	</title>
 	<pageHeader splitType="Stretch"/>
-	<columnHeader height="26" splitType="Stretch">
-		<element kind="staticText" uuid="dd152086-61e8-4d45-9428-dc9345d794bf" x="0" y="7" width="92" height="18" forecolor="#000000" bold="false" style="Column header">
-			<text><![CDATA[Name]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="18a69d66-c0a8-4e28-b173-303293519fc5"/>
+	<columnHeader height="36" splitType="Stretch">
+		<element kind="line" uuid="d69c6691-e92e-45c5-bf2d-c1dc15dabb91" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1">
+			<pen lineWidth="0.5" lineColor="#999999"/>
 		</element>
-		<element kind="staticText" uuid="aa3b86e5-be88-474a-9841-537e3f2e9c38" x="92" y="7" width="92" height="18" forecolor="#000000" bold="false" style="Column header">
-			<text><![CDATA[Title]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8f6f28d6-a392-445f-8c19-6f7bf40ee348"/>
+		<element kind="staticText" uuid="9ee91363-7713-42c5-8069-e15f4b154da2" x="0" y="19" width="80" height="15" style="Column header">
+			<text><![CDATA[Artist]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6d3599bc-cb25-4560-afec-e119287c93dc"/>
 		</element>
-		<element kind="staticText" uuid="51700a79-097e-44e6-b333-f26b20d4d389" x="184" y="7" width="92" height="18" forecolor="#000000" bold="false" style="Column header">
-			<text><![CDATA[Track name]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e4f2d06-8749-477c-823c-e08cbaf487de"/>
+		<element kind="staticText" uuid="846dcfcf-f228-475d-9497-35d64b21e923" x="80" y="21" width="150" height="15" style="Column header">
+			<text><![CDATA[Song title]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2d4ec72a-8048-4e2a-9432-24ce5aae5875"/>
 		</element>
-		<element kind="staticText" uuid="3e7ec9c9-56e4-48f0-84b5-5dd842f79f30" x="276" y="7" width="92" height="18" forecolor="#000000" bold="false" style="Column header">
+		<element kind="staticText" uuid="c511829f-1dff-4f42-baab-2eb0b0f9b819" x="230" y="21" width="180" height="15" style="Column header">
 			<text><![CDATA[Composer]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc956ffd-5614-4a1f-8cef-958c9a45b509"/>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d2fe6e25-da91-4f5b-8a64-2b4a4b92aa18"/>
 		</element>
-		<element kind="staticText" uuid="dc2ad5c0-1623-4b2e-ac9a-4052780a29eb" x="368" y="7" width="92" height="18" forecolor="#000000" bold="false" style="Column header">
-			<text><![CDATA[Milliseconds]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce522c3-635f-4140-8db2-b7238b5506e5"/>
-		</element>
-		<element kind="staticText" uuid="51819bea-1c0e-4a8d-9685-4dd817a6fa7a" x="460" y="7" width="92" height="18" forecolor="#000000" bold="false" style="Column header">
+		<element kind="staticText" uuid="0eb9882b-45a4-4ce5-a6c4-8046fb0bcc5c" x="410" y="19" width="60" height="15" style="Column header">
 			<text><![CDATA[UnitPrice]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="22418445-b5ff-4a3e-a74a-dd382af6cd59"/>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="25b4e7b4-161b-43d1-90c9-7a7b00322cdd"/>
+		</element>
+		<element kind="staticText" uuid="c8592586-51cc-4451-81be-e7fd09de8e91" x="470" y="19" width="79" height="15" style="Column header">
+			<text><![CDATA[Bytes]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="adbf35b6-5540-4680-8b6b-501c274581bb"/>
 		</element>
 	</columnHeader>
 	<detail>
-		<band height="18" splitType="Stretch">
-			<element kind="frame" uuid="b50221b5-8254-440b-8c6f-1f0b138c9259" mode="Opaque" x="0" y="0" width="555" height="18" style="Row">
-				<element kind="textField" uuid="76046dcb-153d-4db0-a21e-ec6bf7a723cc" positionType="Float" x="0" y="0" width="92" height="18" fontSize="14.0" textAdjust="StretchHeight" style="Detail">
-					<expression><![CDATA[$F{Name}]]></expression>
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="18a69d66-c0a8-4e28-b173-303293519fc5"/>
-				</element>
-				<element kind="textField" uuid="40d7ad09-34c3-4ee1-b898-bf63dfa4543a" positionType="Float" x="92" y="0" width="92" height="18" fontSize="14.0" textAdjust="StretchHeight" style="Detail">
-					<expression><![CDATA[$F{Title}]]></expression>
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8f6f28d6-a392-445f-8c19-6f7bf40ee348"/>
-				</element>
-				<element kind="textField" uuid="7e6aced9-9fa5-4d1f-a2cb-004433b0adb7" positionType="Float" x="184" y="0" width="92" height="18" fontSize="14.0" textAdjust="StretchHeight" style="Detail">
-					<expression><![CDATA[$F{COLUMN_3}]]></expression>
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e4f2d06-8749-477c-823c-e08cbaf487de"/>
-				</element>
-				<element kind="textField" uuid="6c41349b-ac4e-4a46-9552-67ccc5297012" positionType="Float" x="276" y="0" width="92" height="18" fontSize="14.0" textAdjust="StretchHeight" style="Detail">
-					<expression><![CDATA[$F{Composer}]]></expression>
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc956ffd-5614-4a1f-8cef-958c9a45b509"/>
-				</element>
-				<element kind="textField" uuid="52abe577-a0b9-471d-a6d2-8091279fc4b8" positionType="Float" x="368" y="0" width="92" height="18" fontSize="14.0" textAdjust="StretchHeight" style="Detail">
-					<expression><![CDATA[$F{Milliseconds}]]></expression>
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce522c3-635f-4140-8db2-b7238b5506e5"/>
-				</element>
-				<element kind="textField" uuid="d0698f59-ba5b-4d68-9c40-15190e6e1ca0" positionType="Float" x="460" y="0" width="92" height="18" fontSize="14.0" textAdjust="StretchHeight" style="Detail">
-					<expression><![CDATA[$F{UnitPrice}]]></expression>
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="22418445-b5ff-4a3e-a74a-dd382af6cd59"/>
-				</element>
+		<band height="16" splitType="Stretch">
+			<element kind="line" uuid="f367c019-9cb7-431c-8713-5a96f9b889aa" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1">
+				<pen lineWidth="0.5" lineColor="#999999"/>
+			</element>
+			<element kind="textField" uuid="db86d1ef-7ac2-409d-981c-3a9951526ef5" x="0" y="0" width="80" height="15" style="Detail">
+				<expression><![CDATA[$F{Name}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6d3599bc-cb25-4560-afec-e119287c93dc"/>
+			</element>
+			<element kind="textField" uuid="3f24758f-3533-4322-b853-54e1eb16d383" x="80" y="0" width="150" height="15" style="Detail">
+				<expression><![CDATA[$F{COLUMN_6}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2d4ec72a-8048-4e2a-9432-24ce5aae5875"/>
+			</element>
+			<element kind="textField" uuid="50e9c1fd-3152-4052-b6c9-20c06d33a40e" x="230" y="0" width="180" height="15" style="Detail">
+				<expression><![CDATA[$F{Composer}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d2fe6e25-da91-4f5b-8a64-2b4a4b92aa18"/>
+			</element>
+			<element kind="textField" uuid="dde4676e-2b1c-4b72-b7a0-5a7e6b34cf24" x="410" y="0" width="60" height="15" style="Detail">
+				<expression><![CDATA[$F{UnitPrice}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="25b4e7b4-161b-43d1-90c9-7a7b00322cdd"/>
+			</element>
+			<element kind="textField" uuid="7e85615e-9b5e-4d5f-a79e-20a3728c64e9" x="470" y="0" width="79" height="15" style="Detail">
+				<expression><![CDATA[$F{Bytes}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="adbf35b6-5540-4680-8b6b-501c274581bb"/>
 			</element>
 		</band>
 	</detail>
-	<columnFooter height="7" splitType="Stretch">
-		<element kind="line" uuid="1133a906-5b71-476e-9f3e-bc97c97058c1" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1">
+	<columnFooter height="45" splitType="Stretch">
+		<element kind="line" uuid="02519f40-8679-4e40-a1f1-699bc025a206" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1">
 			<pen lineWidth="0.5" lineColor="#999999"/>
 		</element>
 	</columnFooter>
-	<pageFooter height="25" splitType="Stretch">
-		<element kind="frame" uuid="729c3539-f946-4d0e-a0a7-bda2815ea1b0" mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000">
-			<element kind="textField" uuid="4834e99c-7f6c-485a-b098-50e5187f2ab4" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" fontSize="10.0" evaluationTime="Report" bold="false" vTextAlign="Middle" style="Column header">
-				<expression><![CDATA[" " + $V{PAGE_NUMBER}]]></expression>
-			</element>
-			<element kind="textField" uuid="9825b46e-76f1-469a-abb8-a1cc27aad685" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" fontSize="10.0" bold="false" hTextAlign="Right" vTextAlign="Middle" style="Column header">
-				<expression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></expression>
-			</element>
-			<element kind="textField" uuid="137d38c7-1a83-4fc5-b156-9d5f1b1a0ddc" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" fontSize="10.0" pattern="EEEEE dd MMMMM yyyy" bold="false" vTextAlign="Middle" style="Column header">
-				<expression><![CDATA[new java.util.Date()]]></expression>
-			</element>
+	<pageFooter height="20" splitType="Stretch">
+		<element kind="textField" uuid="6f13e17d-4b46-4ede-ab63-9d2685ec9c16" x="433" y="0" width="80" height="20" fontSize="10.0" bold="false" hTextAlign="Right" style="Column header">
+			<expression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></expression>
+		</element>
+		<element kind="textField" uuid="6857db7e-824a-4cda-b8dc-fe5c95aca145" x="513" y="0" width="40" height="20" fontSize="10.0" evaluationTime="Report" bold="false" style="Column header">
+			<expression><![CDATA[" " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="ef9fc35f-c45f-4ec6-a5cc-ec2020109ea7" x="0" y="0" width="197" height="20" fontSize="10.0" pattern="EEEEE dd MMMMM yyyy" bold="false" style="Column header">
+			<expression><![CDATA[new java.util.Date()]]></expression>
 		</element>
 	</pageFooter>
 	<summary splitType="Stretch"/>

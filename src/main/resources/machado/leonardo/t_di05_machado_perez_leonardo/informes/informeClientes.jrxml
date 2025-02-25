@@ -73,7 +73,7 @@ FROM customers GROUP BY CustomerId]]></query>
 
 		<element kind="image" uuid="651ccc4b-e999-40fe-bcbf-1f25bcfc98af" x="725" y="0" width="77" height="102">
 
-			<expression><![CDATA[$P{logo}]]></expression>
+			<expression><![CDATA["logo.jpg"]]></expression>
 		</element>
 		<element kind="frame" uuid="d8d9e644-3a32-491d-97cb-a277aff17133" mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000">
 			<element kind="staticText" uuid="27d8f6ee-f0a9-44f6-a160-1763c3b00f30" x="0" y="0" width="370" height="66" bold="false" vTextAlign="Bottom" style="Title">
@@ -181,11 +181,12 @@ FROM customers GROUP BY CustomerId]]></query>
 			</element>
 		</element>
 	</pageFooter>
-	<summary splitType="Stretch" >
-
-			<element kind="textField">
-			<expression><![CDATA[$F{count}]]></expression>
-			</element>
-
+	<summary height="30" splitType="Stretch">
+		<element kind="staticText" uuid="e7d15da4-5a18-4eba-ac8b-cd3c0a4c4f1c" x="0" y="0" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[Clientes totales: ]]></text>
+		</element>
+		<element kind="textField" uuid="fa9c07eb-d4d4-4ab1-8ca0-8c2090f21d1d" x="90" y="0" width="100" height="30">
+			<expression><![CDATA[$V{REPORT_COUNT}]]></expression>
+		</element>
 	</summary>
 </jasperReport>
