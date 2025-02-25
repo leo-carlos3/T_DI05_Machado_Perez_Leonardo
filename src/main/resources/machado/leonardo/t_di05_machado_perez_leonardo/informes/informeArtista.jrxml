@@ -11,8 +11,11 @@
 			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
 		</conditionalStyle>
 	</style>
-	<parameter name="id" class="java.lang.Integer"/>
+	<parameter name="ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
 	<query language="SQL"><![CDATA[SELECT artists. Name ,
+	artists. ArtistId ,
 	albums. Title ,
 	tracks. Name ,
 	tracks. GenreId ,
@@ -24,8 +27,13 @@ FROM tracks
 	 tracks. AlbumId  = albums. AlbumId  
 	INNER JOIN artists ON 
 	 albums. ArtistId  = artists. ArtistId
-WHERE artists.ArtistId=$P{"id"}
+WHERE artists. ArtistId=$P{ID}
 ]]></query>
+	<field name="ArtistId" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.name" value="ArtistId"/>
+		<property name="com.jaspersoft.studio.field.label" value="ArtistId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="artists"/>
+	</field>
 	<field name="Name" class="java.lang.Object">
 		<property name="com.jaspersoft.studio.field.name" value="Name"/>
 		<property name="com.jaspersoft.studio.field.label" value="Name"/>
