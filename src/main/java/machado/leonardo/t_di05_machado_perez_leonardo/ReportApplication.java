@@ -4,11 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import net.sf.jasperreports.engine.JasperReport;
-
 import java.io.IOException;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class ReportApplication extends Application {
     @Override
@@ -23,17 +19,6 @@ public class ReportApplication extends Application {
 
     public static void main(String[] args) {
         launch();
-    }
-
-    public static void connect() {
-        // connection string
-        var url = "jdbc:sqlite:chinook.db";
-
-        try (var conn = DriverManager.getConnection(url)) {
-            System.out.println("Connection to SQLite has been established.");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
 }

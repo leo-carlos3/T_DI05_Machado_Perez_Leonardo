@@ -1,6 +1,6 @@
 package machado.leonardo.t_di05_machado_perez_leonardo;
 
-import javafx.collections.FXCollections;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;

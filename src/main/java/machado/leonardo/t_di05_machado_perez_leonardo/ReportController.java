@@ -24,20 +24,10 @@ public class ReportController {
     /*
     La aplicación al iniciarse debe conectarse a una base de datos SQLite suministrada en esta tarea.
 
-
-
 Se debe usar documentos fxml para las vistas de la aplicación.
 La aplicación debe usar una hoja de estilo y debe tener un aspecto diferente al por defecto de la aplicación.
 No se pueden incrustar estilos a los componentes directamente si no es a través de la hoja de estilos.
      */
-    @FXML
-    private Label welcomeText;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
 
     @FXML
     protected void informeClientes()
@@ -67,7 +57,7 @@ No se pueden incrustar estilos a los componentes directamente si no es a través
             }
 
         } catch (JRException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
     @FXML
