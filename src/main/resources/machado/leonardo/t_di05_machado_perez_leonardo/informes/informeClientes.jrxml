@@ -11,7 +11,6 @@
 			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
 		</conditionalStyle>
 	</style>
-	<parameter name="logo" class="java.io.InputStream"/>
 	<query language="SQL"><![CDATA[SELECT
 	CustomerId ,
 	FirstName ,
