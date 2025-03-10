@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+
+            prefHeight="400.0" prefWidth="600.0">
+    <TableView fx:id="table" prefHeight="229.0" prefWidth="526.0">
+        <columns>
+            <TableColumn fx:id="title" editable="false" prefWidth="312.00002098083496" text="Título" />
+            <TableColumn fx:id="year" editable="false" prefWidth="75.20001220703125" text="Año" />
+            <TableColumn fx:id="rating" editable="false" prefWidth="114.19998168945312" text="Valoración" />
+            <TableColumn fx:id="id" editable="false" minWidth="0.0" prefWidth="68.0" text="ID" />
+        </columns>
+    </TableView>
+
+
+    <MenuBar prefHeight="38.0" prefWidth="142.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Opciones">
+                <items>
+                    <MenuItem fx:id="opcionNueva" mnemonicParsing="false" onAction="#addMovie" text="Añadir película" />
+                    <MenuItem fx:id="opcionModificar" mnemonicParsing="false" onAction="#editMovie" text="Modificar película" />
+                    <MenuItem fx:id="opcionEliminar" mnemonicParsing="false" onAction="#removeDialog" text="Eliminar película" />
+                    <MenuItem fx:id="opcionCerrar" mnemonicParsing="false" onAction="#quitDialog" text="Cerrar Aplicación" />
+                </items>
+            </Menu>
+
+
+        </menus>
+    </MenuBar>
+    <MenuBar prefHeight="38.0" prefWidth="328.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Búsqueda -&gt;">
+            </Menu>
+            <Menu mnemonicParsing="false">
+
+                <graphic>
+                    <TextField fx:id="searchBar" />
+                </graphic>
+            </Menu>
+        </menus>
+    </MenuBar>
+</AnchorPane>
